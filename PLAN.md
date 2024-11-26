@@ -1,5 +1,5 @@
 # Plan for next update
-- [ ] create table in database containg sessions
+- [x] create table in database containg sessions
     - columns:
         - session id
         - user id
