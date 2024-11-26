@@ -1,4 +1,4 @@
-#Database
+# Database
 Name: _login-system_
 Tables:
 - _users_
