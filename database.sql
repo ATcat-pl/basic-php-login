@@ -1,5 +1,5 @@
-CREATE DATABASE IF NOT EXISTS `login-system`;
-USE `login-system`;
+CREATE DATABASE IF NOT EXISTS `loginSystem`;
+USE `loginSystem`;
 CREATE TABLE IF NOT EXISTS `users` (
 	`id` int AUTO_INCREMENT NOT NULL UNIQUE,
 	`username` varchar(64) NOT NULL UNIQUE,
