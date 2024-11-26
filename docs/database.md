@@ -1,5 +1,6 @@
 # Database
 Name: _login-system_
+
 Tables:
 - _users_
 - _savedSessions_
