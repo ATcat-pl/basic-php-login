@@ -1,5 +1,5 @@
-CREATE DATABASE login-system;
-USE login-system;
+CREATE DATABASE loginSystem;
+USE loginSystem;
 CREATE TABLE users (
 	id int AUTO_INCREMENT NOT NULL UNIQUE,
 	username varchar(64) NOT NULL UNIQUE,

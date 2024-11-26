@@ -1,5 +1,5 @@
 # Database
-Name: _login-system_
+Name: _loginSystem_
 
 Tables:
 - _users_
