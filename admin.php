@@ -5,7 +5,7 @@ Copyright Antoni Tyczka 2024
 <html>
 <?php
 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
-	$conn = require("database-conn.php");
+	$conn = require("api/database-conn.php");
 	$stmt = $conn->prepare("SELECT isAdmin FROM users WHERE id=?");
 	$stmt->bind_param("i",$_SESSION["id"]);
 	$stmt->execute();

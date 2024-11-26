@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 	//both username and password are set
 	if (empty($username_err) && empty($password_err)) {
 		//connect to database
-		$conn = require("database-conn.php");
+		$conn = require("api/database-conn.php");
 		//prepare sql
 		$stmt = $conn->prepare("SELECT id,username,isPassHashed,password FROM users WHERE $sqlwhere = ?;");
 		$stmt->bind_param("s", $username);
