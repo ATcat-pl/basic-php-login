@@ -6,7 +6,7 @@ Copyright Antoni Tyczka 2024
 session_start();
 //check if user is already logged in, and redirect if yes
 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
-	header("location: /user/");
+	header("location: user.php");
 	exit;
 }
 
@@ -72,7 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 				$_SESSION["loggedin"] = true;
 				$_SESSION["id"] = $row["id"];
 				$_SESSION["username"] = $row["username"];
-				header("location: /user/");
+				header("location: user.php");
 
 			} else {
 				$login_err = "Invalid username or password.";

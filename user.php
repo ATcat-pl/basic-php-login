@@ -4,6 +4,7 @@ Copyright Antoni Tyczka 2024
 -->
 <html>
 <?php
+session_start();
 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
 ?>
 <head>
