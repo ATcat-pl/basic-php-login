@@ -7,7 +7,7 @@ Functions:
 - [createSession($userId, $username)](#createsessionuserid-username):void
 - [deleteSession()](#deletesession):void
 - [saveSession($userId, $password)](#savesessionuserid-password):void
-- [deleteSavedSession($sessionId)](#deletesavedsession-sessionid):void
+- [deleteSavedSession($sessionId)](#deletesavedsessionsessionid):void
 
 ## checkSessionCookie()
 Checks session cookie and logs user in.
