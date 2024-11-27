@@ -1,3 +1,7 @@
+<!-- This is a file that creates a database connection, used by all other files. -->
+<!--
+Copyright Antoni Tyczka 2024
+-->
 <?php
 if(__FILE__ == $_SERVER["SCRIPT_FILENAME"]){
 	//called directly
