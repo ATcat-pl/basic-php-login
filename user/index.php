@@ -5,13 +5,14 @@ Copyright Antoni Tyczka 2024
 <html>
 <?php
 session_start();
-if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+if (require("../api/isLoggedin.php")) {
 ?>
 <head>
 	<title></title>
 </head>
 <body>
 <h1>Welcome <?php echo $_SESSION["username"];?></h1>
+<a href="logout.php">Logout</a>
 </body>
 <?php
 } else {

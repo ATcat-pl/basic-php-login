@@ -8,3 +8,4 @@
     - base it on sessions (see 1.)
     - use cookies
         - save session id
+- [x] Move all user checks to api

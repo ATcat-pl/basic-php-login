@@ -5,7 +5,7 @@ Copyright Antoni Tyczka 2024
 <?php
 session_start();
 //check if user is already logged in, and redirect if yes
-if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+if (require("api/isLoggedin.php")) {
 	header("location: /user/");
 	exit;
 }
