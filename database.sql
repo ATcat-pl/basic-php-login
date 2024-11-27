@@ -9,10 +9,3 @@ CREATE TABLE users (
 	isAdmin boolean NOT NULL DEFAULT false,
 	PRIMARY KEY (id)
 );
-CREATE TABLE savedSessions (
-	id int NOT NULL UNIQUE,
-	userId int NOT NULL,
-	passHash varchar(255) NOT NULL,
-	PRIMARY KEY (id),
-	FOREIGN KEY (userId) REFERENCES users(id)
-);
