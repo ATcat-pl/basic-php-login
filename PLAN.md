@@ -1,0 +1,10 @@
+# Plan for next update
+- [x] create table in database containg sessions
+    - columns:
+        - session id
+        - user id
+        - password hash
+- [ ] Add optional "remember me" option in login
+    - base it on sessions (see 1.)
+    - use cookies
+        - save session id
