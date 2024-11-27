@@ -3,6 +3,7 @@
 Copyright Antoni Tyczka 2024
 -->
 <?php
+require("api/sessionFunc.php");
 session_start();
 //check if user is already logged in, and redirect if yes
 if (require("api/isLoggedin.php")) {
@@ -21,9 +22,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     <h1>Sign in</h1>
     <form method="post" action="login.php">
 	<input type="text" name="uname" placeholder="user" required>
-	<label for="floatingInput">Username or email</label>
+	<label for="floatingInput">Username or email</label><br>
 	<input type="password" name="pass" placeholder="Password" required>
-	<label for="floatingPassword">Password</label>
+	<label for="floatingPassword">Password</label><br>
+	<input type="checkbox" name="remember" value="yes">
+	<label for="remember">Remember me - by selecting this option you agree to the use of cookies</label><br>
 	<button type="submit">Sign in</button>
     </form>
 <?php
@@ -63,15 +66,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$row = $result->fetch_assoc();
 			$passok = false;
 			if ($row["isPassHashed"]) {
+				//check hashed password
 				$passok = password_verify($password, $row["password"]);
 			} else {
+				//check plain text password
 				$passok = strcmp($password, $row["password"]) == 0;
 			}
 			if ($passok) {
-				session_start();
-				$_SESSION["loggedin"] = true;
-				$_SESSION["id"] = $row["id"];
-				$_SESSION["username"] = $row["username"];
+				//password is ok
+
+				createSession($row["id"],$row["username"]);
+
+				//check if 'remember me' is checked
+				if(isset($_POST["remember"]) && strcmp($_POST["remember"],"yes")==0) {
+					saveSession($row["id"],$row["password"]);
+				}
+
+				//logged in, redirect to /user/
 				header("location: /user/");
 
 			} else {
