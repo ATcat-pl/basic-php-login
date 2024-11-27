@@ -23,12 +23,26 @@ function loggedIn()
             echo "yes";
         }
     } else {
-        if ($included) {
-            return 0;
+        //no session
+        require("sessionFunc.php");
+
+        //check session cookie
+        if (checkSessionCookie()) {
+            if ($included) {
+                return 1;
+            } else {
+                echo "yes";
+            }
         } else {
-            echo "no";
+            //no session, no session cookie
+            if ($included) {
+                return 0;
+            } else {
+                echo "no";
+            }
         }
     }
 }
+
 return loggedIn();
 ?>

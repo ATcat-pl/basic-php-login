@@ -10,9 +10,10 @@ CREATE TABLE users (
 	PRIMARY KEY (id)
 );
 CREATE TABLE savedSessions (
-	id int NOT NULL UNIQUE,
+	id char(13) NOT NULL UNIQUE,
 	userId int NOT NULL,
 	passHash varchar(255) NOT NULL,
+	creationTime timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	PRIMARY KEY (id),
 	FOREIGN KEY (userId) REFERENCES users(id)
 );
