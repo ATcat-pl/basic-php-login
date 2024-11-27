@@ -1,4 +1,4 @@
-<!-- This an admin panel page -->
+<!-- This a page that requires user to be logged in and be an administrator -->
 <!--
 Copyright Antoni Tyczka 2024
 -->
@@ -9,12 +9,10 @@ if ($isAdmin == 1) {
 	//is administrator
 	?>
 	<head>
-		<title>Admin Panel</title>
+		<title></title>
 	</head>
 	<body>
-        <h1>Admin Panel</h1>
-		<h2>Welcome <?php echo $_SESSION["username"]; ?></h2>
-        <p><a href="adduser.php">Create user</a></p>
+		<h1>Welcome <?php echo $_SESSION["username"]; ?></h1>
 	</body>
 	<?php
 } elseif ($isAdmin == 0) {
