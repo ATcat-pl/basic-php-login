@@ -3,11 +3,11 @@
 This file contains functions for managing sessions.
 
 Functions:
-- [checkSessionCookie()](#checkSessionCookie):bool
-- [createSession($userId, $username)](#createSession--userId--$username):void
-- [deleteSession()](#deleteSession):void
-- [saveSession($userId, $password)](#saveSession--userId--$password):void
-- [deleteSavedSession($sessionId)](#deleteSavedSession--sessionId):void
+- [checkSessionCookie()](#checksessioncookie):bool
+- [createSession($userId, $username)](#createsessionuserid-username):void
+- [deleteSession()](#deletesession):void
+- [saveSession($userId, $password)](#savesessionuserid-password):void
+- [deleteSavedSession($sessionId)](#deletesavedsession-sessionid):void
 
 ## checkSessionCookie()
 Checks session cookie and logs user in.
