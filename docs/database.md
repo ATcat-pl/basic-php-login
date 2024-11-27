@@ -3,7 +3,6 @@ Name: _loginSystem_
 
 Tables:
 - _users_
-- _savedSessions_
 
 ## Tables
 ### users
