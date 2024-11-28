@@ -4,8 +4,10 @@ This file contains functions for managing users.
 It's used by admin panel.
 
 Functions:
-- [userMgmtFunc](#usermgmtfunc):bool
-  - [createUser($username, $password, $email, $isAdmin)](#createuserusername-password-email-isadmin)
+- [createUser($username, $password, $email, $isAdmin)](#createuserusername-password-email-isadmin):bool
+- [deleteUser($userId)](#deleteuseruserid):bool
+- [getUserIdByName($username)](#getuseridbynameusername):int
+- [getUserIdByEmail($email)](#getuseridbyemail):int
 
 ## createUser($username, $password, $email, $isAdmin)
 Creates user with specified parameters.
@@ -20,12 +22,20 @@ Parameters:
   - 0 if user isn't an administrator
   
 Type: bool
-Return table
-```
-+-------+---------------------------+
-| value |         condition         |
-+-------+---------------------------+
-| true  | user created successfully |
-| false |   failed to create user   |
-+-------+---------------------------+
-```
+Returns `true` on success or `false` on fail.
+## deleteUser($userId):bool
+Deletes user with specified id.
+Warning also deletes all sessions for that user.
+
+Type: bool
+Returns `true` on success or `false` on fail.
+## getUserIdByName($username)
+Gets user id based on username.
+
+Type: int
+Returns user's id or `0` on error.
+## getUserIdByEmail($email)
+Gets user id based on email.
+
+Type: int
+Returns user's id or `0` on error.

@@ -1,4 +1,6 @@
-<!-- This is a file that check if user is an administrator, used by all other files.
+<?php /*
+This is a file that check if user is an administrator, used by all other files.
+
 Returns:
 +------------------------+----------------------------------------------+
 |        method          |                                              |
@@ -11,8 +13,7 @@ Returns:
 +-----------+------------+----------------------------------------------+
 
 Copyright Antoni Tyczka 2024
--->
-<?php
+*/
 function isAdmin()
 {
     $loadedDirectly = strcmp(__FILE__, $_SERVER["SCRIPT_FILENAME"]);

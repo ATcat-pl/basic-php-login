@@ -1,10 +1,16 @@
-<!-- This is a file that contains functions for checking sessions
+<?php
+/* 
+This is a file that contains functions for checking sessions
+
 Functions:
 createUser($username, $password, $email, $isAdmin):bool
+deleteUser($userId):bool
+getUserIdByName($username):int
+getUserIdByEmail($email):int
 
 Copyright Antoni Tyczka 2024
--->
-<?php
+*/
+
 function createUser($username, $password, $email, $isAdmin) {
     //generate password hash
     $passHash = password_hash($password, PASSWORD_DEFAULT);
@@ -18,5 +24,47 @@ function createUser($username, $password, $email, $isAdmin) {
     }
     $stmt->close();
     return false;
+}
+
+function deleteUser($userId) {
+    $conn = require("database-conn.php");
+    $stmt = $conn->prepare("DELETE FROM users WHERE id = ?");
+    $stmt->bind_param("i", $userId);
+    if($stmt->execute()){
+        $stmt->close();
+        require("sessionFunc.php");
+        discardSessions($userId);
+        return true;
+    }
+    $stmt->close();
+    return false;
+}
+
+function getUserIdByName($username) {
+    $conn = require("database-conn.php");
+    $stmt = $conn->prepare("SELECT id FROM users WHERE username = ?");
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $stmt->close();
+    if($result->num_rows > 0){
+        $row = $result->fetch_assoc();
+        return intval($row["id"]);
+    }
+    return 0;
+}
+
+function getUserIdByEmail($email) {
+    $conn = require("database-conn.php");
+    $stmt = $conn->prepare("SELECT id FROM users WHERE email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $stmt->close();
+    if($result->num_rows > 0){
+        $row = $result->fetch_assoc();
+        return intval($row["id"]);
+    }
+    return 0;
 }
 ?>

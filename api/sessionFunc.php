@@ -1,14 +1,18 @@
-<!-- This is a file that contains functions for checking sessions
+<?php
+/*
+This is a file that contains functions for checking sessions
+
 Functions:
 checkSessionCookie():bool
 createSession($userId, $username):void
 deleteSession():void
-saveSession($userId, $password):void
-deleteSavedSession($sessionId):void
+saveSession($userId, $password):bool
+deleteSavedSession($sessionId):bool
+discardSessions($userId):bool
 
 Copyright Antoni Tyczka 2024
--->
-<?php
+*/
+
 function checkSessionCookie()
 {
     //check if cookie exists
@@ -95,8 +99,12 @@ function saveSession($userId, $password)
     //save session in database
     $stmt = $conn->prepare("INSERT INTO savedSessions (id, userId, passHash) VALUES (?,?,?)");
     $stmt->bind_param("sis", $sessionid, $userId, $passHash);
-    $stmt->execute();
+    if ($stmt->execute()) {
+        $stmt->close();
+        return true;
+    }
     $stmt->close();
+    return false;
 }
 
 function deleteSavedSession($sessionId)
@@ -109,8 +117,24 @@ function deleteSavedSession($sessionId)
     $conn = require("database-conn.php");
     $stmt = $conn->prepare("DELETE FROM savedSessions WHERE id = ?");
     $stmt->bind_param("s", $sessionId);
-    $stmt->execute();
+    if ($stmt->execute()) {
+        $stmt->close();
+        return true;
+    }
     $stmt->close();
+    return false;
+}
+
+function discardSessions($userId) {
+    $conn = require("database-conn.php");
+    $stmt = $conn->prepare("DELETE FROM savedSessions WHERE userId = ?");
+    $stmt->bind_param("s", $sessionId);
+    if ($stmt->execute()) {
+        $stmt->close();
+        return true;
+    }
+    $stmt->close();
+    return false;
 }
 
 ?>

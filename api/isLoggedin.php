@@ -1,4 +1,6 @@
-<!-- This is a file that check if user is logged in, used by all other files.
+<?php /*
+This is a file that check if user is logged in, used by all other files.
+
 Returns:
 +------------------------+-------------------------+
 |        method          |                         |
@@ -10,8 +12,7 @@ Returns:
 +-----------+------------+-------------------------+
 
 Copyright Antoni Tyczka 2024
--->
-<?php
+*/
 function loggedIn()
 {
     session_start();
