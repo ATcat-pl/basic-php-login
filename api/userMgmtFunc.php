@@ -7,6 +7,8 @@ createUser($username, $password, $email, $isAdmin):bool
 deleteUser($userId):bool
 getUserIdByName($username):int
 getUserIdByEmail($email):int
+makeAdmin($userId):bool
+makeNonAdmin($userId):bool
 
 Copyright Antoni Tyczka 2024
 */
@@ -32,7 +34,7 @@ function deleteUser($userId) {
     $stmt->bind_param("i", $userId);
     if($stmt->execute()){
         $stmt->close();
-        require("sessionFunc.php");
+        require_once("sessionFunc.php");
         discardSessions($userId);
         return true;
     }
@@ -66,5 +68,23 @@ function getUserIdByEmail($email) {
         return intval($row["id"]);
     }
     return 0;
+}
+
+function makeAdmin($userId) {
+    $conn = require("database-conn.php");
+    $stmt = $conn->prepare("UPDATE users SET isAdmin = 1 WHERE id = ?");
+    $stmt->bind_param("i", $userId);
+    $success = $stmt->execute();
+    $stmt->close();
+    return $success;
+}
+
+function makeNonAdmin($userId){
+    $conn = require("database-conn.php");
+    $stmt = $conn->prepare("UPDATE users SET isAdmin = 0 WHERE id = ?");
+    $stmt->bind_param("i", $userId);
+    $success = $stmt->execute();
+    $stmt->close();
+    return $success;
 }
 ?>

@@ -8,6 +8,8 @@ Functions:
 - [deleteUser($userId)](#deleteuseruserid):bool
 - [getUserIdByName($username)](#getuseridbynameusername):int
 - [getUserIdByEmail($email)](#getuseridbyemail):int
+- [makeAdmin($userId)](#makeadminuserid):bool
+- [makeNonAdmin($userId)](#makenonadminuserid):bool
 
 ## createUser($username, $password, $email, $isAdmin)
 Creates user with specified parameters.
@@ -39,3 +41,13 @@ Gets user id based on email.
 
 Type: int
 Returns user's id or `0` on error.
+## makeAdmin($userId)
+Makes user an Administrator.
+
+Type: bool
+Returns `true` on success or `false` on fail.
+## makeNonAdmin($userId)
+Removes Administrator privilliges from user.
+
+Type: bool
+Returns `true` on success or `false` on fail.

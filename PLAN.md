@@ -3,4 +3,4 @@
   - [x] add user
   - [x] delete user
   - [ ] list users
-  - [ ] modify user
+  - [x] modify user

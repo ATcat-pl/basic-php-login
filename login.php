@@ -3,13 +3,17 @@
 Copyright Antoni Tyczka 2024
 -->
 <?php
-require("api/sessionFunc.php");
+require_once("api/sessionFunc.php");
 session_start();
 //check if user is already logged in, and redirect if yes
-if (require("api/isLoggedin.php")) {
+if (require_once("api/isLoggedin.php")) {
 	header("location: /user/");
 	exit;
 }
+
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 ?>

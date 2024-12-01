@@ -25,7 +25,7 @@ function loggedIn()
         }
     } else {
         //no session
-        require("sessionFunc.php");
+        require_once("sessionFunc.php");
 
         //check session cookie
         if (checkSessionCookie()) {
