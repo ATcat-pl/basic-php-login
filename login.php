@@ -3,7 +3,7 @@
 Copyright Antoni Tyczka 2024
 -->
 <?php
-require("api/sessionFunc.php");
+require_once("api/sessionFunc.php");
 session_start();
 //check if user is already logged in, and redirect if yes
 if (require("api/isLoggedin.php")) {
@@ -82,8 +82,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 					saveSession($row["id"],$row["password"]);
 				}
 
-				//logged in, redirect to /user/
-				header("location: /user/");
+				//logged in, redirect to user/
+				header("location: user/");
 
 			} else {
 				$login_err = "Invalid username or password.";
@@ -92,12 +92,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$login_err = "Invalid username or password.";
 		}
 	}
-	include("/var/www/api-internal/html/head.htm");
 ?>
 	<title>Sign in</title>
-<?php
-	include("/var/www/api-internal/html/base-main.php");
-?>
 	<h1 class="display-4 font-weight-normal">Signing in</h1>
 	<p class="lead font-weight-normal"><?php echo $login_err . "<br>" . $username_err . "<br>" . $password_err; ?></p>
 	<button class="btn btn-danger rounded-pill px-3" onclick="location.href='/login.php'" type="button">Go back</button>
